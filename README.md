@@ -6,25 +6,28 @@ ChessApp is a full-stack web application that lets users play chess in the brows
 
 The app supports standard chess rules, including legal move validation, game state management, and user interaction through a responsive interface.
 
-## Running the Backend Server
-Perform these steps if running for the first time
-- Make sure you have python3 and pipenv installed
-- Navigate to project root
-- Create a virtual enviornment (alternatively you can use homebrew to install system-wide)
-  - ```python3 -m venv venv```
-- Activate the virtual enviornment
-  - Macbook: ```source venv/bin/activate```
-  - Windows: ```venv\Scripts\activate```
-- This installs Flask and Flask-CORS using the requirments.txt file included in the repo.
-  - ```pip install -r backend/requirements.txt```
+## Backend Server
+### Running Locally 
+```bash
+cd /Users/karan.aulakh/personal/ChessApp/backend
 
-To run the Backend Server
-- Make sure virtual enviornment is running if you are using one. Go to project Root and run  
-- ```python3 backend/src/main.py```
+# Build & run Docker container
+docker build -t chess-backend .
+docker run -p 5001:5000 chess-backend
+
+# In a new terminal, test your changes
+curl -X POST http://localhost:5001/new-game
+```
+
+### Pushing changes
+- Simply push changes, railway auto-deploys
+- https://railway.app/dashboard (might take 2-5 minutes to redeploy)
+- Then you can test with actual server URL
 
 
 
-## Running the Frontend Server
+## Frontend Server
+### Running Locally
 Install nvm if you don't have it already
 - ```curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash```
 - add the following to your ~/.zshrc or ~/.bash or equivalent depending on the shell you are using
@@ -43,3 +46,9 @@ To run the Server
 - ```npm install```
 - ```npm run serve```
 
+
+
+### Pushing changes
+- Simply push changes, Vercel auto-deploys
+- https://vercel.com/dashboard (takes 1-2 minutes to redeploy)
+- Live at: https://labchess.com and https://www.labchess.com
