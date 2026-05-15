@@ -1,4 +1,6 @@
 # backend files
+venv/
+.venv/
 backend/.dockerignore
 __pycache__/
 
