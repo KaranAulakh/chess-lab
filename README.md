@@ -8,6 +8,7 @@ The app supports standard chess rules, including legal move validation, game sta
 
 ## Backend Server
 ### Running Locally 
+*Recommended to run with Docker, make sure you have docker installed and running*
 ```bash
 cd /Users/karan.aulakh/personal/ChessApp/backend
 
@@ -19,8 +20,21 @@ docker run -p 5001:5000 chess-backend
 curl -X POST http://localhost:5001/new-game
 ```
 
+*Alternatively, you may run with a virtual env instead*
+```bash
+- python3 -m venv venv
+# Activate the virtual enviornment 
+# Macbook 
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+# install all dependencies such as Flask
+pip install -r backend/requirements.txt
+```
+
+
 ### Pushing changes
-- Simply push changes, railway auto-deploys
+- Simply push changes to main in git, railway auto-deploys
 - https://railway.app/dashboard (might take 2-5 minutes to redeploy)
 - Then you can test with actual server URL
 
