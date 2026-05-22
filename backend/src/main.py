@@ -13,9 +13,12 @@ logger = logging.getLogger(__name__)
 game_states: Dict[str, GameState] = {}
 
 CORS(app, resources={r"/*": {'origins': [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
     'http://localhost:8081',
+    'http://127.0.0.1:8081',
     'https://labchess.com',
-    'https://www.labchess.com'
+    'https://www.labchess.com',
 ]}})
 
 @app.route('/new-game', methods=['POST'])

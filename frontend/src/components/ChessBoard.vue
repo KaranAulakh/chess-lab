@@ -147,12 +147,19 @@ export default {
       };
 
       await Promise.all(
-        Object.keys(imageSources).map(async (key) => {
-          const img = new Image();
-          img.src = imageSources[key];
-          await img.decode();
-          this.images[key] = img;
-        })
+        Object.keys(imageSources).map(
+          (key) =>
+            new Promise((resolve, reject) => {
+              const img = new Image();
+              img.onload = () => {
+                this.images[key] = img;
+                resolve();
+              };
+              img.onerror = () =>
+                reject(new Error(`Failed to load piece image: ${key}`));
+              img.src = imageSources[key];
+            })
+        )
       );
     },
 

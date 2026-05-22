@@ -4,6 +4,13 @@ FROM python:3.12-slim
 # Set work directory
 WORKDIR /app
 
+# Download Stockfish Engine for bot / analysis
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends stockfish \
+  && rm -rf /var/lib/apt/lists/*
+
+ENV STOCKFISH_PATH=/usr/games/stockfish
+
 # Install dependencies first (cached layer)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
